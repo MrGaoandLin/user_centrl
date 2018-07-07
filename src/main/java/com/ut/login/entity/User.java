@@ -26,46 +26,6 @@ public class User implements Serializable {
 
     private Boolean state;
 
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public String getUserName() {
-//        return userName;
-//    }
-//
-//    public void setUserName(String userName) {
-//        this.userName = userName;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-//
-//    public String getSex() {
-//        return sex;
-//    }
-//
-//    public void setSex(String sex) {
-//        this.sex = sex;
-//    }
-//
-//    public Boolean getState() {
-//        return state;
-//    }
-//
-//    public void setState(Boolean state) {
-//        this.state = state;
-//    }
-
     //    @Temporal(TemporalType.TIMESTAMP) //显示： 2011-04-12 22:51:34.0
 //    @Column(name = "createTime")
 //    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
