@@ -1,6 +1,5 @@
 package com.ut.login.service.impl;
 
-import com.sun.deploy.net.HttpResponse;
 import com.ut.commonUtil.exceptionUtil.CommonUtil;
 import com.ut.commonUtil.exceptionUtil.ExceptionUtil;
 import com.ut.login.dao.UserDAO;
@@ -8,13 +7,14 @@ import com.ut.login.entity.MapCache;
 import com.ut.login.entity.User;
 import com.ut.login.service.ILoginService;
 import com.ut.webconfig.interceptor.WebInterceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -23,9 +23,7 @@ public class LoginServiceImpl implements ILoginService {
     @Autowired
     private UserDAO userDAO;
 
-    private MapCache mapCache;
-
-
+    private static final Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 
     @Override
     public String login(User user, HttpServletResponse response) {
@@ -33,6 +31,7 @@ public class LoginServiceImpl implements ILoginService {
         if (user == null ){
             ExceptionUtil.validationException("登录名密码不能为空");
         }
+        System.out.println(user);
         User myUser = userDAO.findById(user.getId());
 
 //        listUser = new ArrayList<>();
@@ -47,11 +46,9 @@ public class LoginServiceImpl implements ILoginService {
             cookie.setPath("/");
             cookie.setMaxAge(WebInterceptor.COOKIE_TIMEOUT);
             response.addCookie(cookie);
-            mapCache.setCacheMap(cookie,userMap);
+            MapCache.setCacheMap("cookieId",userMap);
         }
-
-
-
+        logger.debug("This is test message {}" + myUser);
         return null;
     }
 }
