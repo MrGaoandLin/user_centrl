@@ -38,7 +38,7 @@ public class LoginServiceImpl implements ILoginService {
         if (user.getUserName().equals(myUser.getUserName()) && user.getPassword().equals(myUser.getPassword())){
 
             //创建List保存sessionId和user的关系，方便下次验证
-            Map<String,Object> userMap = new HashMap<>();
+            Map<String,Object> userMap = new HashMap<String, Object>();
             String cookieId = CommonUtil.getUUID();
             userMap.put("user",user);
             userMap.put("cookieId",cookieId);
@@ -48,7 +48,9 @@ public class LoginServiceImpl implements ILoginService {
             response.addCookie(cookie);
             MapCache.setCacheMap("cookieId",userMap);
         }
-        logger.debug("This is test message {}" + myUser);
+        logger.debug("This is test message logback");
+        logger.info("This is test message logback");
+        logger.error("This is test message logback");
         return null;
     }
 }
